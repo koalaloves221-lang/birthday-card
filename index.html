@@ -739,6 +739,125 @@ body {
 /* =========================
    MOBILE
 ========================= */
+   /* =========================
+   PIXEL CONFETTI
+========================= */
+
+.confetti {
+    position: absolute;
+
+    z-index: 25;
+
+    left: 50%;
+    top: 20%;
+
+    width: 10px;
+    height: 10px;
+
+    pointer-events: none;
+}
+
+.confetti span {
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    opacity: 0;
+
+    animation: confettiBurst 1.8s ease-out 12.5s forwards;
+}
+
+
+/* CONFETTI COLORS */
+
+.confetti span:nth-child(1),
+.confetti span:nth-child(5),
+.confetti span:nth-child(9),
+.confetti span:nth-child(13) {
+    background: #d9a34d;
+}
+
+.confetti span:nth-child(2),
+.confetti span:nth-child(6),
+.confetti span:nth-child(10),
+.confetti span:nth-child(14) {
+    background: #f3dfc9;
+}
+
+.confetti span:nth-child(3),
+.confetti span:nth-child(7),
+.confetti span:nth-child(11),
+.confetti span:nth-child(15) {
+    background: #c96b70;
+}
+
+.confetti span:nth-child(4),
+.confetti span:nth-child(8),
+.confetti span:nth-child(12),
+.confetti span:nth-child(16) {
+    background: #71382a;
+}
+
+
+/* DIFFERENT BURST DIRECTIONS */
+
+.confetti span:nth-child(1)  { --x: -110px; --y: -80px; --r: 140deg; }
+.confetti span:nth-child(2)  { --x: -75px;  --y: -105px; --r: 220deg; }
+.confetti span:nth-child(3)  { --x: -35px;  --y: -120px; --r: 80deg; }
+.confetti span:nth-child(4)  { --x: 10px;   --y: -125px; --r: 190deg; }
+
+.confetti span:nth-child(5)  { --x: 55px;   --y: -110px; --r: 300deg; }
+.confetti span:nth-child(6)  { --x: 95px;   --y: -80px;  --r: 120deg; }
+.confetti span:nth-child(7)  { --x: 120px;  --y: -35px;  --r: 250deg; }
+.confetti span:nth-child(8)  { --x: 105px;  --y: 20px;   --r: 60deg; }
+
+.confetti span:nth-child(9)  { --x: 75px;   --y: 60px;   --r: 170deg; }
+.confetti span:nth-child(10) { --x: 25px;   --y: 80px;   --r: 290deg; }
+.confetti span:nth-child(11) { --x: -25px;  --y: 75px;   --r: 40deg; }
+.confetti span:nth-child(12) { --x: -70px;  --y: 55px;   --r: 210deg; }
+
+.confetti span:nth-child(13) { --x: -105px; --y: 25px;   --r: 330deg; }
+.confetti span:nth-child(14) { --x: -120px; --y: -20px;  --r: 100deg; }
+.confetti span:nth-child(15) { --x: -85px;  --y: -55px;  --r: 270deg; }
+.confetti span:nth-child(16) { --x: 0px;    --y: -95px;  --r: 150deg; }
+
+
+@keyframes confettiBurst {
+
+    0% {
+        opacity: 1;
+
+        transform:
+            translate(0, 0)
+            rotate(0deg)
+            scale(1);
+    }
+
+    55% {
+        opacity: 1;
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            rotate(var(--r))
+            scale(1);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(
+                var(--x),
+                calc(var(--y) + 150px)
+            )
+            rotate(calc(var(--r) + 180deg))
+            scale(0.7);
+    }
+}
 
 @media (max-width: 600px) {
 
@@ -905,7 +1024,24 @@ body {
     <div class="banner-text">SURPRISE</div>
 </div>
 
-<div class="confetti"></div>
+<div class="confetti">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
    
     <!-- INTRO TEXT -->
 
