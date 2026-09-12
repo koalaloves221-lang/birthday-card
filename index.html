@@ -3,9 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Little Birthday Surprise 🎂</title>
+
+<title>Birthday Surprise 🎂</title>
 
 <style>
+
+/* =========================
+   BASIC SETUP
+========================= */
+
 * {
     box-sizing: border-box;
 }
@@ -22,28 +28,42 @@ body {
     font-family: monospace;
 }
 
+
 /* =========================
-   MAIN PARTY ROOM
+   NIGHT PARTY ROOM
 ========================= */
 
 .scene {
     position: relative;
     width: 100vw;
     height: 100vh;
+
     overflow: hidden;
+
     background:
-        radial-gradient(circle at 50% 20%, #18234a 0%, #090d20 45%, #03050d 100%);
+        radial-gradient(
+            circle at 50% 20%,
+            #18234a 0%,
+            #090d20 45%,
+            #03050d 100%
+        );
 }
 
-/* Tiny pixel stars */
+
+/* =========================
+   STARS
+========================= */
 
 .star {
     position: absolute;
+
     width: 4px;
     height: 4px;
+
     background: #fff3c4;
-    box-shadow:
-        0 0 4px #fff3c4;
+
+    box-shadow: 0 0 5px #fff3c4;
+
     opacity: 0.7;
 }
 
@@ -56,26 +76,35 @@ body {
 .star:nth-child(7) { left: 86%; top: 14%; }
 .star:nth-child(8) { left: 93%; top: 31%; }
 
+
 /* =========================
-   PARTY LIGHTS
+   FAIRY LIGHTS
 ========================= */
 
 .fairy-lights {
     position: absolute;
+
     top: 7%;
     left: 5%;
+
     width: 90%;
     height: 35px;
+
     border-top: 3px solid #25294a;
+
     transform: rotate(2deg);
 }
 
 .light {
     position: absolute;
+
     width: 12px;
     height: 16px;
+
     background: #e8b95a;
-    box-shadow: 0 0 12px #e8b95a;
+
+    box-shadow:
+        0 0 12px #e8b95a;
 }
 
 .light:nth-child(1) { left: 5%; top: 8px; }
@@ -85,29 +114,39 @@ body {
 .light:nth-child(5) { left: 65%; top: 16px; }
 .light:nth-child(6) { left: 80%; top: 11px; }
 
+
 /* =========================
    TABLE
 ========================= */
 
 .table {
     position: absolute;
+
     bottom: 0;
     left: 0;
+
     width: 100%;
     height: 27%;
+
     background: #24161a;
+
     border-top: 8px solid #49302b;
 }
 
 .table::before {
     content: "";
+
     position: absolute;
+
     top: 0;
     left: 0;
+
     width: 100%;
     height: 7px;
+
     background: #7a4b3d;
 }
+
 
 /* =========================
    FALLING BULB
@@ -115,7 +154,8 @@ body {
 
 .bulb {
     position: absolute;
-    z-index: 20;
+
+    z-index: 5;
 
     left: 50%;
     top: -120px;
@@ -137,10 +177,9 @@ body {
         bulbGlow 1.2s ease-in-out 2.4s infinite alternate;
 }
 
-/* bulb neck */
-
 .bulb::before {
     content: "";
+
     position: absolute;
 
     width: 14px;
@@ -152,10 +191,9 @@ body {
     background: #77747a;
 }
 
-/* bulb wire */
-
 .bulb::after {
     content: "";
+
     position: absolute;
 
     width: 4px;
@@ -201,11 +239,353 @@ body {
     }
 }
 
+
+/* =========================
+   CAKE
+========================= */
+
+.cake {
+
+    position: absolute;
+
+    z-index: 10;
+
+    left: 50%;
+
+    bottom: 21%;
+
+    width: 300px;
+    height: 270px;
+
+    transform: translateX(-50%);
+
+    opacity: 0;
+
+    animation:
+        cakeAppear 4s ease-in-out 5s forwards;
+}
+
+/* ---------- TOP TIER ---------- */
+
+.top-tier {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 105px;
+
+    transform: translateX(-50%);
+
+    width: 155px;
+    height: 70px;
+
+    background: #4a241b;
+
+    border-radius: 50% 50% 12px 12px;
+
+    border: 5px solid #321611;
+
+    box-shadow:
+        inset 0 -12px #3a1b16,
+        0 8px 0 #1d0d0b;
+}
+
+.top-tier::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: -14px;
+
+    transform: translateX(-50%);
+
+    width: 155px;
+    height: 30px;
+
+    border-radius: 50%;
+
+    background: #5e2d20;
+
+    border: 5px solid #321611;
+}
+
+.top-tier::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 15px;
+    top: 3px;
+
+    width: 125px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    background: #f6e6d1;
+}
+
+
+/* ---------- BOTTOM TIER ---------- */
+
+.bottom-tier {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 25px;
+
+    transform: translateX(-50%);
+
+    width: 235px;
+    height: 105px;
+
+    background: #51251c;
+
+    border-radius: 50% 50% 15px 15px;
+
+    border: 6px solid #321611;
+
+    box-shadow:
+        inset 0 -15px #3b1915,
+        0 9px 0 #1d0d0b;
+}
+
+.bottom-tier::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 10px;
+    top: 7px;
+
+    width: 200px;
+    height: 16px;
+
+    border-radius: 50%;
+
+    background: #f3dfc9;
+}
+
+.bottom-tier::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 25px;
+    top: 37px;
+
+    width: 180px;
+    height: 5px;
+
+    background: #71382a;
+
+    box-shadow:
+        0 28px #71382a;
+}
+
+
+/* =========================
+   CAKE DECORATIONS
+========================= */
+
+.decoration {
+
+    position: absolute;
+
+    width: 14px;
+    height: 14px;
+
+    background: #d9a34d;
+
+    border-radius: 50%;
+
+    z-index: 5;
+}
+
+.decoration.one {
+    left: 43px;
+    bottom: 55px;
+}
+
+.decoration.two {
+    left: 92px;
+    bottom: 35px;
+
+    background: #d76a70;
+}
+
+.decoration.three {
+    right: 45px;
+    bottom: 55px;
+
+    background: #d9a34d;
+}
+
+.decoration.four {
+    right: 90px;
+    bottom: 35px;
+
+    background: #f0d9c2;
+}
+
+
+/* =========================
+   CANDLES
+========================= */
+
+.candles {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 173px;
+
+    width: 150px;
+    height: 70px;
+
+    transform: translateX(-50%);
+
+    z-index: 15;
+}
+
+.candle {
+
+    position: absolute;
+
+    width: 8px;
+    height: 35px;
+
+    background:
+        repeating-linear-gradient(
+            135deg,
+            #f7e6c9 0px,
+            #f7e6c9 5px,
+            #d77882 5px,
+            #d77882 8px
+        );
+
+    border: 1px solid #4a211f;
+}
+
+
+/* =========================
+   CANDLE FLAMES
+   OFF FOR NOW
+========================= */
+
+.flame {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: -16px;
+
+    width: 9px;
+    height: 14px;
+
+    transform: translateX(-50%);
+
+    background: #ffd76a;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 8px #ffd76a,
+        0 0 15px #ffae42;
+
+    opacity: 0;
+}
+
+
+/* =========================
+   CANDLE POSITIONS
+========================= */
+
+.candle:nth-child(1)  { left: 71px; top: 0; }
+.candle:nth-child(2)  { left: 53px; top: 4px; }
+.candle:nth-child(3)  { left: 89px; top: 4px; }
+.candle:nth-child(4)  { left: 36px; top: 12px; }
+.candle:nth-child(5)  { left: 106px; top: 12px; }
+.candle:nth-child(6)  { left: 20px; top: 24px; }
+.candle:nth-child(7)  { left: 122px; top: 24px; }
+.candle:nth-child(8)  { left: 7px; top: 38px; }
+.candle:nth-child(9)  { left: 135px; top: 38px; }
+.candle:nth-child(10) { left: 27px; top: 47px; }
+.candle:nth-child(11) { left: 115px; top: 47px; }
+.candle:nth-child(12) { left: 45px; top: 54px; }
+.candle:nth-child(13) { left: 97px; top: 54px; }
+.candle:nth-child(14) { left: 61px; top: 60px; }
+.candle:nth-child(15) { left: 81px; top: 60px; }
+.candle:nth-child(16) { left: 34px; top: 28px; }
+.candle:nth-child(17) { left: 100px; top: 28px; }
+.candle:nth-child(18) { left: 62px; top: 23px; }
+.candle:nth-child(19) { left: 80px; top: 23px; }
+
+
+/* =========================
+   CAKE APPEAR ANIMATION
+========================= */
+
+@keyframes cakeAppear {
+
+    0% {
+        opacity: 0;
+        transform:
+            translateX(-50%)
+            translateY(45px)
+            scale(0.90);
+    }
+
+    25% {
+        opacity: 0.12;
+        transform:
+            translateX(-50%)
+            translateY(35px)
+            scale(0.92);
+    }
+
+    50% {
+        opacity: 0.35;
+        transform:
+            translateX(-50%)
+            translateY(22px)
+            scale(0.95);
+    }
+
+    75% {
+        opacity: 0.70;
+        transform:
+            translateX(-50%)
+            translateY(10px)
+            scale(0.98);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translateX(-50%)
+            translateY(0)
+            scale(1);
+    }
+}
+
+
 /* =========================
    INTRO TEXT
 ========================= */
 
 .intro {
+
     position: absolute;
 
     left: 50%;
@@ -222,7 +602,8 @@ body {
     opacity: 0;
 
     animation:
-        introAppear 1s ease 2.7s forwards;
+        introAppear 1.5s ease-in-out 2.7s forwards,
+        introDisappear 3s ease-in-out 4s forwards;
 }
 
 @keyframes introAppear {
@@ -238,14 +619,47 @@ body {
     }
 }
 
+
+@keyframes introDisappear {
+
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .cake {
+        transform: translateX(-50%) scale(0.75);
+        transform-origin: bottom center;
+    }
+
+    .intro {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+}
+
 </style>
 </head>
+
 
 <body>
 
 <div class="scene">
 
-    <!-- Stars -->
+    <!-- STARS -->
+
     <div class="star"></div>
     <div class="star"></div>
     <div class="star"></div>
@@ -255,23 +669,135 @@ body {
     <div class="star"></div>
     <div class="star"></div>
 
-    <!-- Fairy lights -->
+
+    <!-- FAIRY LIGHTS -->
+
     <div class="fairy-lights">
+
         <div class="light"></div>
         <div class="light"></div>
         <div class="light"></div>
         <div class="light"></div>
         <div class="light"></div>
         <div class="light"></div>
+
     </div>
 
-    <!-- Falling bulb -->
+
+    <!-- FALLING BULB -->
+
     <div class="bulb"></div>
 
-    <!-- Table -->
+
+    <!-- TABLE -->
+
     <div class="table"></div>
 
-    <!-- Temporary text -->
+
+    <!-- CAKE -->
+
+    <div class="cake">
+
+        <div class="bottom-tier"></div>
+
+        <div class="top-tier"></div>
+
+
+        <!-- CAKE DECORATIONS -->
+
+        <div class="decoration one"></div>
+        <div class="decoration two"></div>
+        <div class="decoration three"></div>
+        <div class="decoration four"></div>
+
+
+        <!-- 19 CANDLES -->
+
+        <div class="candles">
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle">
+                <div class="flame"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- INTRO TEXT -->
+
     <div class="intro">
         SOMETHING SPECIAL IS WAITING...
     </div>
