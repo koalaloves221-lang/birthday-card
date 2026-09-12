@@ -818,29 +818,7 @@ body {
 }
 
 
-@keyframes candleLight {
 
-    0% {
-        opacity: 0;
-        transform:
-            translateX(-50%)
-            scale(0.2);
-    }
-
-    60% {
-        opacity: 1;
-        transform:
-            translateX(-50%)
-            scale(1.25);
-    }
-
-    100% {
-        opacity: 1;
-        transform:
-            translateX(-50%)
-            scale(1);
-    }
-}
    /* =========================
    MOBILE
 ========================= */
@@ -983,7 +961,55 @@ body {
 
 
 <body>
+<script>
 
+const candles = document.querySelectorAll(".candle");
+
+function lightCandles() {
+
+    candles.forEach((candle, index) => {
+
+        setTimeout(() => {
+
+            const flame = candle.querySelector(".flame");
+
+            flame.style.opacity = "1";
+
+            flame.animate(
+                [
+                    {
+                        transform: "translateX(-50%) scale(0.2)"
+                    },
+                    {
+                        transform: "translateX(-50%) scale(1.3)"
+                    },
+                    {
+                        transform: "translateX(-50%) scale(1)"
+                    }
+                ],
+                {
+                    duration: 350,
+                    easing: "ease-out",
+                    fill: "forwards"
+                }
+            );
+
+        }, index * 250);
+
+    });
+
+}
+
+
+/* START CANDLES AFTER CONFETTI */
+
+setTimeout(() => {
+
+    lightCandles();
+
+}, 13800);
+
+</script>
 <div class="scene">
 
     <!-- STARS -->
