@@ -631,7 +631,111 @@ body {
     }
 }
 
+/* =========================
+   SURPRISE BANNER
+========================= */
 
+.surprise-banner {
+    position: absolute;
+
+    z-index: 20;
+
+    left: 50%;
+    top: -120px;
+
+    width: 230px;
+    height: 70px;
+
+    transform: translateX(-50%);
+
+    background: #f3dfaa;
+
+    border: 5px solid #4a211f;
+
+    box-shadow:
+        0 8px 0 #2b1412,
+        0 0 18px rgba(243, 223, 170, 0.35);
+
+    opacity: 0;
+
+    animation:
+        bannerDrop 1.2s cubic-bezier(.2,.9,.3,1) 9.3s forwards,
+        bannerPop 0.5s ease-in-out 12.5s forwards;
+}
+
+.banner-text {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #4a211f;
+
+    font-size: 28px;
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    text-shadow:
+        2px 2px 0 #d9a34d;
+}
+
+
+/* ---------- BANNER DROP ---------- */
+
+@keyframes bannerDrop {
+
+    0% {
+        top: -120px;
+        opacity: 0;
+        transform: translateX(-50%) rotate(-8deg);
+    }
+
+    70% {
+        top: 22%;
+        opacity: 1;
+        transform: translateX(-50%) rotate(4deg);
+    }
+
+    85% {
+        top: 19%;
+        transform: translateX(-50%) rotate(-2deg);
+    }
+
+    100% {
+        top: 20%;
+        opacity: 1;
+        transform: translateX(-50%) rotate(0deg);
+    }
+}
+
+
+/* ---------- BANNER POP ---------- */
+
+@keyframes bannerPop {
+
+    0% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
+
+    30% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.12) rotate(-3deg);
+    }
+
+    55% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.18) rotate(3deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) scale(1.45);
+    }
+}
 /* =========================
    MOBILE
 ========================= */
@@ -795,7 +899,14 @@ body {
 
     </div>
 
+<!-- SURPRISE BANNER -->
 
+<div class="surprise-banner">
+    <div class="banner-text">SURPRISE</div>
+</div>
+
+<div class="confetti"></div>
+   
     <!-- INTRO TEXT -->
 
     <div class="intro">
