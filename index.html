@@ -1,16 +1,282 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Birthday Surprise 🎂</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Birthday Surprise 🎂</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #050817;
+    font-family: monospace;
+}
+
+/* =========================
+   MAIN PARTY ROOM
+========================= */
+
+.scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 50% 20%, #18234a 0%, #090d20 45%, #03050d 100%);
+}
+
+/* Tiny pixel stars */
+
+.star {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #fff3c4;
+    box-shadow:
+        0 0 4px #fff3c4;
+    opacity: 0.7;
+}
+
+.star:nth-child(1) { left: 8%; top: 15%; }
+.star:nth-child(2) { left: 18%; top: 29%; }
+.star:nth-child(3) { left: 27%; top: 12%; }
+.star:nth-child(4) { left: 39%; top: 22%; }
+.star:nth-child(5) { left: 62%; top: 13%; }
+.star:nth-child(6) { left: 74%; top: 25%; }
+.star:nth-child(7) { left: 86%; top: 14%; }
+.star:nth-child(8) { left: 93%; top: 31%; }
+
+/* =========================
+   PARTY LIGHTS
+========================= */
+
+.fairy-lights {
+    position: absolute;
+    top: 7%;
+    left: 5%;
+    width: 90%;
+    height: 35px;
+    border-top: 3px solid #25294a;
+    transform: rotate(2deg);
+}
+
+.light {
+    position: absolute;
+    width: 12px;
+    height: 16px;
+    background: #e8b95a;
+    box-shadow: 0 0 12px #e8b95a;
+}
+
+.light:nth-child(1) { left: 5%; top: 8px; }
+.light:nth-child(2) { left: 20%; top: 13px; }
+.light:nth-child(3) { left: 35%; top: 17px; }
+.light:nth-child(4) { left: 50%; top: 20px; }
+.light:nth-child(5) { left: 65%; top: 16px; }
+.light:nth-child(6) { left: 80%; top: 11px; }
+
+/* =========================
+   TABLE
+========================= */
+
+.table {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 27%;
+    background: #24161a;
+    border-top: 8px solid #49302b;
+}
+
+.table::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 7px;
+    background: #7a4b3d;
+}
+
+/* =========================
+   FALLING BULB
+========================= */
+
+.bulb {
+    position: absolute;
+    z-index: 20;
+
+    left: 50%;
+    top: -120px;
+
+    width: 30px;
+    height: 42px;
+
+    transform: translateX(-50%);
+
+    background: #fff2a8;
+
+    box-shadow:
+        0 0 8px #fff2a8,
+        0 0 25px #ffd86b,
+        0 0 55px #ffca45;
+
+    animation:
+        bulbFall 2.4s cubic-bezier(.22,.8,.35,1) forwards,
+        bulbGlow 1.2s ease-in-out 2.4s infinite alternate;
+}
+
+/* bulb neck */
+
+.bulb::before {
+    content: "";
+    position: absolute;
+
+    width: 14px;
+    height: 12px;
+
+    left: 8px;
+    bottom: -12px;
+
+    background: #77747a;
+}
+
+/* bulb wire */
+
+.bulb::after {
+    content: "";
+    position: absolute;
+
+    width: 4px;
+    height: 100px;
+
+    left: 13px;
+    bottom: 42px;
+
+    background: #292b38;
+}
+
+@keyframes bulbFall {
+
+    0% {
+        top: -120px;
+        transform: translateX(-50%) rotate(-12deg);
+    }
+
+    70% {
+        top: 18%;
+        transform: translateX(-50%) rotate(8deg);
+    }
+
+    85% {
+        top: 15%;
+        transform: translateX(-50%) rotate(-4deg);
+    }
+
+    100% {
+        top: 16%;
+        transform: translateX(-50%) rotate(0deg);
+    }
+}
+
+@keyframes bulbGlow {
+
+    from {
+        opacity: 0.85;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* =========================
+   INTRO TEXT
+========================= */
+
+.intro {
+    position: absolute;
+
+    left: 50%;
+    top: 44%;
+
+    transform: translate(-50%, -50%);
+
+    color: #f7df9c;
+
+    font-size: clamp(14px, 2vw, 24px);
+
+    letter-spacing: 4px;
+
+    opacity: 0;
+
+    animation:
+        introAppear 1s ease 2.7s forwards;
+}
+
+@keyframes introAppear {
+
+    from {
+        opacity: 0;
+        transform: translate(-50%, -45%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+</style>
 </head>
 
 <body>
-    <h1>🎉 Happy Birthday! 🎉</h1>
 
-    <p>I made a little surprise for you.</p>
+<div class="scene">
 
-    <button onclick="alert('🎂 Your birthday cake is waiting for you!')">
-        Open your surprise 🎁
-    </button>
+    <!-- Stars -->
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+
+    <!-- Fairy lights -->
+    <div class="fairy-lights">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+    </div>
+
+    <!-- Falling bulb -->
+    <div class="bulb"></div>
+
+    <!-- Table -->
+    <div class="table"></div>
+
+    <!-- Temporary text -->
+    <div class="intro">
+        SOMETHING SPECIAL IS WAITING...
+    </div>
+
+</div>
+
 </body>
 </html>
